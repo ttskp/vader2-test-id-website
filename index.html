@@ -1,8 +1,22 @@
 <html>
 
 <body>
-  test
+  <div class="container">
+  </div>
   <script type="module">
+    
+    const createDiv = (...cbs) => {
+      const el = document.createElement('div');
+      [...cbs].reduce((el, cb) => cb(el), el)
+      return el;
+    }
+    
+    const withText = (text) => (el) => {
+      el.innerText = text;
+      return el;
+    }
+
+    
     async function sha256(message) {
       // encode as UTF-8
       const msgBuffer = new TextEncoder().encode(message);                    
@@ -29,7 +43,16 @@
       }
     }));
     
+    const elements = result.map(entry => {
+      return [
+        createDiv(withText(result.entry)),
+        createDiv(withText(result.hash)),
+        createDiv(withText(result.hashWithModulo))
+     ]
+    });
+    
     console.log(result);
+    console.log(elements);
     
     
   </script>
