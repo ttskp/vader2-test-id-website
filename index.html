@@ -23,7 +23,7 @@
       const hash = sha256(entry);
       
       return {
-        entry
+        entry,
         hash,
         hashWithModulo: parseInt(hash, 16) % 50000
       }
