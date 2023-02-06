@@ -45,9 +45,9 @@
     
     const elements = result.flatMap(entry => {
       return [
-        createDiv(withText(result.entry)),
-        createDiv(withText(result.hash)),
-        createDiv(withText(result.hashWithModulo))
+        createDiv(withText(entry.entry)),
+        createDiv(withText(entry.hash)),
+        createDiv(withText(entry.hashWithModulo))
      ]
     });
     
