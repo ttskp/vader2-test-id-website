@@ -43,7 +43,7 @@
       }
     }));
     
-    const elements = result.map(entry => {
+    const elements = result.flatMap(entry => {
       return [
         createDiv(withText(result.entry)),
         createDiv(withText(result.hash)),
@@ -54,6 +54,7 @@
     console.log(result);
     console.log(elements);
     
+    document.querySelector(".container").append(...elements)
     
   </script>
 </body>
