@@ -37,7 +37,7 @@
     }  
     
     const arr = await fetch("./test.json").then(r => r.json());
-    const result = await Promise.all(arr.map(async (entry) => {
+    const result = (await Promise.all(arr.map(async (entry) => {
       const hash = await sha256(entry);
       
       return {
@@ -45,7 +45,7 @@
         hash,
         hashWithModulo: parseInt(hash, 16) % 50000
       }
-    })).sort((a, b) => a.hashWithModulo - b.hashWithModulo);
+    }))).sort((a, b) => a.hashWithModulo - b.hashWithModulo);
 
     const elements = result.flatMap(entry => {
       return [
