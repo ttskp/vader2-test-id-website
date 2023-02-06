@@ -45,8 +45,8 @@
         hash,
         hashWithModulo: parseInt(hash, 16) % 50000
       }
-    }));
-    
+    })).sort((a, b) => a.hashWithModulo - b.hashWithModulo);
+
     const elements = result.flatMap(entry => {
       return [
         createDiv(withText(entry.entry)),
