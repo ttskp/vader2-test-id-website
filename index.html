@@ -3,7 +3,7 @@
 <body>
   test
   <script type="module">
-      console.log(await fetch("./test.json"));
+      console.log(await fetch("./test.json").then(r => r.json()));
   </script>
 </body>
 </html>
