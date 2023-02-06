@@ -20,9 +20,12 @@
     
     const arr = await fetch("./test.json").then(r => r.json());
     const result = arr.map(entry => {
+      const hash = sha256(entry);
+      
       return {
         entry
-        hash: sha256(entry)
+        hash,
+        hashWithModulo: parseInt(hash, 16) % 50000
       }
     });
     
