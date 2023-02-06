@@ -4,8 +4,9 @@
   <div class="container" style="display: grid; grid-template-columns: auto auto auto;">
     <div>name</div>
     <div>hash</div>
+    <div>2nd-hash</div>
     <div>hash with modulo</div>
-
+    <div>2nd-hash with modulo</div>
   </div>
   <script type="module">
     
@@ -39,19 +40,23 @@
     const arr = await fetch("./test.json").then(r => r.json());
     const result = (await Promise.all(arr.map(async (entry) => {
       const hash = await sha256(entry);
-      
+      const hash2 = await sha256(hash);
       return {
         entry,
         hash,
-        hashWithModulo: parseInt(hash, 16) % 50000
+        hash2,
+        hashWithModulo: parseInt(hash, 16) % 50000,
+        hash2WithModulo: parseInt(hash2, 16) % 50000
       }
-    }))).sort((a, b) => a.hashWithModulo - b.hashWithModulo);
+    }))).sort((a, b) => a.hash2WithModulo - b.hash2WithModulo);
 
     const elements = result.flatMap(entry => {
       return [
         createDiv(withText(entry.entry)),
         createDiv(withText(entry.hash)),
-        createDiv(withText(entry.hashWithModulo))
+        createDiv(withText(entry.hash2)),
+        createDiv(withText(entry.hashWithModulo)),
+        createDiv(withText(entry.hash2WithModulo))
      ]
     });
     
