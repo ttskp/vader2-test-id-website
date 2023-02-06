@@ -19,15 +19,15 @@
     }  
     
     const arr = await fetch("./test.json").then(r => r.json());
-    const result = arr.map(entry => {
-      const hash = sha256(entry);
+    const result = await Promise.all(arr.map(async (entry) => {
+      const hash = await sha256(entry);
       
       return {
         entry,
         hash,
         hashWithModulo: parseInt(hash, 16) % 50000
       }
-    });
+    }));
     
     console.log(result);
     
