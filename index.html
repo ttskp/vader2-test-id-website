@@ -45,8 +45,8 @@
         entry,
         hash,
         hash2,
-        hashWithModulo: parseInt(hash, 16) % 50000,
-        hash2WithModulo: parseInt(hash2, 16) % 50000
+        hashWithModulo: parseInt(hash, 16) % 49999,
+        hash2WithModulo: parseInt(hash2, 16) % 49999
       }
     }))).sort((a, b) => a.hash2WithModulo - b.hash2WithModulo);
 
