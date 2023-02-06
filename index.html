@@ -48,7 +48,7 @@
         hashWithModulo: parseInt(hash, 16) % 49999,
         hash2WithModulo: parseInt(hash2, 16) % 49999
       }
-    }))).sort((a, b) => a.hash2WithModulo - b.hash2WithModulo);
+    }))).sort((a, b) => a.hashWithModulo - b.hashWithModulo);
 
     const elements = result.flatMap(entry => {
       return [
