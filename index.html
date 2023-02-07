@@ -43,7 +43,15 @@
         hash,
         hashWithModulo: BigInt("0x"+hash) % BigInt(49999),
       }
-    }))).sort((a, b) => a.hashWithModulo - b.hashWithModulo);
+    }))).sort((a, b) => {
+        if(a.hashWithModulo > b.hashWithModulo) {
+          return 1;
+        } else if (a.hashWithModulo < b.hashWithModulo){
+          return -1;
+        } else {
+          return 0;
+        }
+    });
 
     const elements = result.flatMap(entry => {
       return [
