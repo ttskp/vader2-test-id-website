@@ -42,7 +42,7 @@
       return {
         entry,
         hash,
-        hashWithModulo: BigInt(hash) % 49999,
+        hashWithModulo: BigInt("0x"+hash) % 49999,
       }
     }))).sort((a, b) => a.hashWithModulo - b.hashWithModulo);
 
