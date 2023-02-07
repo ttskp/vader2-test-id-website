@@ -38,11 +38,10 @@
     const arr = await fetch("./test.json").then(r => r.json());
     const result = (await Promise.all(arr.map(async (entry) => {
       const hash = await sha256(entry);
-      const hash2 = await sha256(hash);
       return {
         entry,
         hash,
-        hashWithModulo: BigInt("0x"+hash) % 49999,
+        hashWithModulo: BigInt("0x"+hash) % BigInt(49999),
       }
     }))).sort((a, b) => a.hashWithModulo - b.hashWithModulo);
 
