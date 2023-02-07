@@ -1,12 +1,10 @@
 <html>
 
 <body>
-  <div class="container" style="display: grid; grid-template-columns: auto auto auto auto auto;">
+  <div class="container" style="display: grid; grid-template-columns: auto auto auto;">
     <div>name</div>
     <div>hash</div>
-    <div>2nd-hash</div>
     <div>hash with modulo</div>
-    <div>2nd-hash with modulo</div>
   </div>
   <script type="module">
     
@@ -44,9 +42,7 @@
       return {
         entry,
         hash,
-        hash2,
-        hashWithModulo: parseInt(hash, 16) % 49999,
-        hash2WithModulo: parseInt(hash2, 16) % 49999
+        hashWithModulo: BigInt(hash, 16) % 49999,
       }
     }))).sort((a, b) => a.hashWithModulo - b.hashWithModulo);
 
@@ -54,9 +50,7 @@
       return [
         createDiv(withText(entry.entry)),
         createDiv(withText(entry.hash)),
-        createDiv(withText(entry.hash2)),
         createDiv(withText(entry.hashWithModulo)),
-        createDiv(withText(entry.hash2WithModulo))
      ]
     });
     
